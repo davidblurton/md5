@@ -1,0 +1,3 @@
+true: package(core,ppx_jane)
+true: package(Cryptokit,ppx_jane)
+true: thread,debug

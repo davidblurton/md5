@@ -1,15 +1,15 @@
 open Core.Std;
-open Cryptokit;
+open Crypto;
 
 let get_inchan = fun
   | "-" => In_channel.stdin
   | filename => In_channel.create binary::true filename;
 
-let do_hash = fun filename _ =>
-  get_inchan filename
-  |> hash_channel (Hash.md5 ())
-  |> transform_string (Hexa.encode ())
-  |> print_endline;
+let do_hash filename =>
+  fun () =>
+    get_inchan filename
+    |> Crypto.md5
+    |> print_endline;
 
 let command =
   Command.basic
